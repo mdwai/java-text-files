@@ -1,23 +1,18 @@
-// fetch content of two text files using a single object and display the contents
 package read_text_file;
-import java.io.FileInputStream;
-import java.io.SequenceInputStream;
-public class Read_Text_File_4
+import java.io.*;
+public class Read_text_file_4
 {
-    public static void main(String a[])
+    public static void main(String[] args) throws Exception
     {
-        int c;
-        try
-        {
-            FileInputStream fis1=new FileInputStream("D:\\text_files\\my_text_1.txt");
-            FileInputStream fis2=new FileInputStream("D:\\text_files\\my_text_2.txt");
-            SequenceInputStream sis = new SequenceInputStream(fis1,fis2);
-            while((c=sis.read())!=-1)
-                System.out.print((char)c);
-        }
-        catch(Exception e)
-        {
-            System.out.println("Error "+e.toString());
-        }
+        // File path is passed as parameter
+        File f = new File("D:\\text_files\\my_text_1.txt");
+        // Double back-SLASH is to avoid compiler interpret words
+        // like \test as \t (ie. as a escape sequence)
+        BufferedReader br = new BufferedReader(new FileReader(f));
+        String st;
+        while ((st = br.readLine()) != null)
+            System.out.println(st);
     }
 }
+//readline returns the ascii value of the corresponding char
+//readline returns is it true or false(null)

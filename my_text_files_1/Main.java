@@ -1,15 +1,22 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+package read_text_file;
+import java.io.FileInputStream;
+import java.io.SequenceInputStream;
+public class main
+{
+    public static void main(String a[])
+    {
+        int c;
+        try
+        {
+            FileInputStream fis1=new FileInputStream("D:\\text_files\\my_text_1.txt");
+            FileInputStream fis2=new FileInputStream("D:\\text_files\\my_text_2.txt");
+            SequenceInputStream sis = new SequenceInputStream(fis1,fis2);
+            while((c=sis.read())!=-1)
+                System.out.print(c+" ");
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error "+e.toString());
         }
     }
 }
